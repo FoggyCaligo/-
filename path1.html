@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rider</title>
+    <link rel="stylesheet" href="./index.css"/>
+
+</head>
+<body >
+    <div class="title_div">
+    <center>
+        <div class="search">
+            <input id="input" type="text" placeholder="검색어 입력"  onchange="button_event(this.value)">
+        </div>  
+        
+        <div class="menu_section">
+            <div class="btn_curr" onclick="location.href=('index.html')">지도</div>
+            <div class="btn_non" onclick="location.href=('record.html')">라이딩 기록</div>
+                
+
+
+        </div>
+
+        <div class="map1"  >
+            <img src="./image/경로1.png" class="map1">
+        </div>
+    
+
+        <div class="bottom">
+            <div style="width:33.33vw;height:10vh; color:white; background-color: #09aa5a; float:left; line-height: 10vh;">
+                40 km
+            </div>
+            
+            <div style="width:33.33vw;height:10vh; color:white; background-color: #1F53FF; float:left; line-height:10vh;">
+                0 km/h
+            </div>
+           
+            <div style="width:33.33vw;height:10vh; color:white; background-color: #ba1016; float:left; line-height: 10vh;;">
+                300 kcal
+            </div>
+
+        </div>
+    
+        
+    
+    </center>   
+        
+        
+
+
+    </div>
+
+</body>
+</html>
+
+
+
+
+
+
+<script>
+    function start(){
+        if (confirm("검색된 경로에 사람들이 피해 간 지점이 포함되어 있습니다. 다른 경로를 추천해 드릴까요?") == true){    //확인
+            location.href="path1.html"
+        }
+        else{   //취소
+            location.href="index.html";
+        }
+    }
+
+
+    function button_event(value){
+         v = value;
+         if(v.includes("sp")){
+            
+             if (confirm("검색된 경로에 사람들이 피해 간 지점이 포함되어 있습니다. 다른 경로를 추천해 드릴까요?") == true){    //확인
+                 location.href="path1.html"
+             }else{   //취소
+                 location.href="path2.html"
+             }
+         }
+         else if(v.includes("경남")){
+             location.href = "index.html"
+         }
+         else{
+            alert("해당 장소를 찾지 못하였습니다.(목업 버전일 경우 'sp관'을 검색해 보세요)")
+         }
+
+
+      
+     }
+
+</script>

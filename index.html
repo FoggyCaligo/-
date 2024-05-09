@@ -7,11 +7,76 @@
     <link rel="stylesheet" href="./index.css"/>
 
 </head>
-<body>
+<body >
     <div class="title_div">
+    <center>
+        <div class="search">
+            <input id="input" type="text" placeholder="검색어 입력" onchange="button_event(this.value)">
+        </div>  
+        
+        <div class="menu_section">
+            <div class="btn_curr" onclick="location.href=('index.html')">지도</div>
+            <div class="btn_non" onclick="location.href=('record.html')">라이딩 기록</div>
                 
+
+
+        </div>
+
+        <div class="map1"  >
+            <img src="image/지도.png" class="map1">
+        </div>
+    
+
+        <div class="bottom">
+            <div style="width:33.33vw;height:10vh; color:white; background-color: #09aa5a; float:left; line-height: 10vh;">
+                0 km
+            </div>
+            
+            <div style="width:33.33vw;height:10vh; color:white; background-color: #1F53FF; float:left; line-height:10vh;">
+                0 km/h
+            </div>
+            
+            <div style="width:33.33vw;height:10vh; color:white; background-color: #ba1016; float:left; line-height: 10vh;;">
+                0 kcal
+            </div>
+
+        </div>
+    
+        
+    
+    </center>   
+        
+        
+
 
     </div>
 
 </body>
 </html>
+
+
+
+
+
+
+<script>
+
+
+    function button_event(value){
+        v = document.getElementById("input").value;
+        if(v.includes("sp")){
+            location.href = "alert1.html"
+        }
+        else if(v.includes("경남")){
+            location.href = "index.html"
+        }
+        else{
+            alert("해당 장소를 찾지 못하였습니다.(목업 버전일 경우 'sp관'을 검색해 보세요)")
+         }
+        
+
+        
+      
+    }
+
+</script>
