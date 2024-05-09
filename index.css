@@ -86,13 +86,13 @@ body{
     border: 1px solid black;
   }
   .date{
-    width:10%;
+    width:25%;
     height:10vh;
     line-height: 10vh;
     float:left;
   }
   .data{
-    width:30%;
+    width:25%;
     height:10vh;
     line-height: 10vh;
     float:left;
