@@ -57,7 +57,7 @@ body{
 
 
   .map1{
-    overflow: hidden; 
+    overflow: scroll; 
     height:73vh;
   }
 
