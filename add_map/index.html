@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rider</title>
+    <link rel="stylesheet" href="./index.css"/>
+
+</head>
+<body >
+    <div class="title_div">
+    <center>
+        <div class="search">
+            <input id="input" type="text" placeholder="검색어 입력" >
+            <div class="searchmark" onclick="button_event(this.value)">검색</div>
+        </div>  
+        
+        <div class="menu_section">
+            <div class="btn_curr" onclick="location.href=('index.html')">지도</div>
+            <div class="btn_non" onclick="location.href=('record.html')">라이딩 기록</div>
+        </div>
+
+        <div style="height:7vh;"></div>
+
+
+        <div class="map1" >
+            <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b7247674bf8e5e71eade131a4bab5317"></script>
+        </div>
+    
+
+        <div class="bottom">
+            <div style="width:33.33vw;height:10vh; color:white; background-color: #09aa5a; float:left; line-height: 10vh;">
+                0 km
+            </div>
+            
+            <div style="width:33.33vw;height:10vh; color:white; background-color: #1F53FF; float:left; line-height:10vh;">
+                0 km/h
+            </div>
+            
+            <div style="width:33.33vw;height:10vh; color:white; background-color: #ba1016; float:left; line-height: 10vh;;">
+                0 kcal
+            </div>
+
+        </div>
+    
+        
+    
+    </center>   
+        
+        
+
+
+    </div>
+
+</body>
+</html>
+
+
+
+
+
+
+<script>
+
+var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+var options = { //지도를 생성할 때 필요한 기본 옵션
+	center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+	level: 3 //지도의 레벨(확대, 축소 정도)
+};
+
+var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+
+
+
+
+
+
+
+
+    function button_event(value){
+        v = document.getElementById('input').value;
+         if(v=="sp"){
+             if (confirm("검색된 경로에 사람들이 피해 간 지점이 포함되어 있습니다. 다른 경로를 추천해 드릴까요?") == true){    //확인
+                document.getElementById("img").src = "./img/path_sp1.png"
+             }else{   //취소
+                document.getElementById("img").src = "./img/path_sp2.png"
+             }
+         }
+         else if(v==("a")){
+            if (confirm("검색된 경로에 사람들이 피해 간 지점이 포함되어 있습니다. 다른 경로를 추천해 드릴까요?") == true){    //확인
+                 document.getElementById("img").src = "/img/sp_1.png"
+             }else{   //취소
+                document.getElementById("img").src = "/img/sp_2.png"
+             }
+         }
+         else if(v==("경남")){
+            document.getElementById("img").src = "/img/basic.png"
+         }
+         else{
+            alert("해당 장소를 찾지 못하였습니다.(목업 버전일 경우 'sp'를 검색해 보세요)")
+         }
+        
+
+        
+      
+    }
+
+</script>
