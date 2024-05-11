@@ -79,7 +79,7 @@ var geojsonFeature = {
     },
     "geometry": {
         "type": "Point",
-        "coordinates": [-104.99404, 39.75621]
+        "coordinates": [36.321771, 127.369366]
     }
 };
 
@@ -89,38 +89,54 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
-var marker = L.marker([36.321771, 127.369366]).addTo(map);
+//var marker = L.marker([36.321771, 127.369366]).addTo(map);
 
-L.geoJSON(geojsonFeature).addTo(map);
 
-var start = [];
+
+
+
+
+
+var loc = [];
 count = 0;
+
 function onMapClick(e) {
     var marker = L.marker(e.latlng).addTo(map);
     if(count==0){
-        start.push(e.latlng);
-        alert(start)
+        
+        loc.push([e.latlng.lat,e.latlng.lng]);
+        alert(loc)
         count = 1;
     }
     else if(count==1){
-        start.push(e.latlng);
-        alert(start)
+        loc.push([e.latlng.lat,e.latlng.lng]);
+        alert(loc)
+
+        //var dest_layer = L.geoJSON().addTo(map);
+        //dest_layer.addData(geojsonFeature);
         
 
         var myLines = [{
             "type": "LineString",
-            "coordinates": [start[0], start[1]]
+            "coordinates": [[loc[0][0],loc[0][1]], [loc[1][0],loc[1][1]]]
         }];
+        
+        
+
+
         var myStyle = {
-            "color": "#ff7800",
+            "color": "#FF4D27",
             "weight": 5,
-            "opacity": 0.65
+            "opacity": 1
         };
-        L.geoJSON(myLines, {style: myStyle}).addTo(map);
-        style=[];
+        
+        L.geoJSON(geojsonFeature).addTo(map);
+
+        L.geoJSON(myLines,{style:myStyle}).addTo(map);
+        loc=[];
         count = 0;
     }
-    alert("You clicked the map at " + e.latlng);
+    //alert("You clicked the map at " + e.latlng);
     
 }
 map.on('click', onMapClick);
