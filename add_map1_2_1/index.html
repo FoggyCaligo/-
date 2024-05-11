@@ -20,7 +20,7 @@
         <div class="search">
             <input id="input" type="text" placeholder="검색어 입력" >
             <div class="searchmark" onclick="button_event2(this.value)">검색</div>
-            <div class="searchmark" onclick="location.reload()">re</div>
+            <div class="searchmark" onclick="location.reload()">초기화</div>
         
         </div>  
 
@@ -100,20 +100,21 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 var loc = [];
 count = 0;
 mapMarkers = [];
-function onMapClick(e) {
-    mapMarkers.push(  L.marker(e.latlng).addTo(map)  );
-    if(count==0){
-        map.removeLayer(mapMarkers);
-        
 
+function onMapClick(e) {
+    //var marker = L.marker(e.latlng).addTo(map);
+    mapMarkers.push(  L.marker(e.latlng).addTo(map)  );
+    
+    if(count==0){
+        
         loc.push([e.latlng.lat,e.latlng.lng]);
-        alert(loc,"\n\n        ",count,mapMarkers,"test")
+        alert(loc,"test",mapMarkers);
         count = 1;
     }
     else if(count==1){
         loc.push([e.latlng.lat,e.latlng.lng]);
-        alert(loc,"\n\n       ",count)
-        // marker2 = L.marker(e.latlng).addTo(map);
+        alert(loc,mapMarkers);
+
         //var dest_layer = L.geoJSON().addTo(map);
         //dest_layer.addData(geojsonFeature);
         
@@ -122,20 +123,21 @@ function onMapClick(e) {
             "type": "LineString",
             "coordinates": [[loc[0][0],loc[0][1]], [loc[1][0],loc[1][1]]]
         }];
+        
+        
+
+
         var myStyle = {
             "color": "#FF4D27",
-            "weight": 100,
+            "weight": 5,
             "opacity": 1
         };
         
         L.geoJSON(geojsonFeature).addTo(map);
 
         L.geoJSON(myLines,{style:myStyle}).addTo(map);
-       
-        
         loc=[];
         count = 0;
-        
     }
     //alert("You clicked the map at " + e.latlng);
     
